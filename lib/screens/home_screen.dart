@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sakura_learn/screens/practice_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 const Color pastellBlue = Color(0xFFA8DADC);

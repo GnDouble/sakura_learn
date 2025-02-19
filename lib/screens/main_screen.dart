@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:sakura_learn/screens/home_screen.dart';
 import 'package:sakura_learn/screens/practice_screen.dart';
+import 'package:sakura_learn/screens/progress_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -11,35 +12,41 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final PersistentTabController _controller = PersistentTabController(initialIndex: 0);
+  final PersistentTabController _controller = PersistentTabController(
+    initialIndex: 0,
+  );
 
   List<Widget> _buildScreens() {
     return [
-      HomeScreen(controller: _controller),  // Pass the controller
+      HomeScreen(controller: _controller), // Pass the controller
       const PracticeScreen(),
-      const Center(child: Text("Progress")), // Placeholder for third tab
+      const ProgressScreen(), // Placeholder for third tab
     ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
+    const Color activeColor = Color.fromARGB(255, 126, 163, 165);
     return [
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.home),
+        icon: const Icon(Icons.home, color: Colors.black),
         title: ("Home"),
-        activeColorPrimary: Colors.blue,
+        activeColorPrimary: activeColor,
         inactiveColorPrimary: Colors.grey,
+        activeColorSecondary: Colors.black
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.fitness_center),
+        icon: const Icon(Icons.fitness_center, color: Colors.black),
         title: ("Practice"),
-        activeColorPrimary: Colors.blue,
+        activeColorPrimary: activeColor,
         inactiveColorPrimary: Colors.grey,
+        activeColorSecondary: Colors.black
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.leaderboard),
-        title: ("Progress"),
-        activeColorPrimary: Colors.blue,
+        icon: const Icon(Icons.leaderboard, color: Colors.black),
+        title: "Progress",
+        activeColorPrimary: activeColor,
         inactiveColorPrimary: Colors.grey,
+        activeColorSecondary: Colors.black
       ),
     ];
   }
@@ -51,7 +58,16 @@ class _MainScreenState extends State<MainScreen> {
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
+      backgroundColor: pastellBlue,
       navBarStyle: NavBarStyle.style10,
+      decoration: NavBarDecoration(
+        border: Border(
+          top: BorderSide(
+            color: Colors.black, // Divider color
+            width: 0.1, // Thickness of the divider
+          ),
+        ),
+      ),
     );
   }
 }

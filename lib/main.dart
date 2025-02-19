@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sakura_learn/screens/main_screen.dart';
-import '/screens/home_screen.dart';
-
-
-
 
 void main() {
   runApp(MyApp());
 }
- 
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -23,4 +16,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
