@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import "/widgets/bottom_nav_bar.dart";
+import 'package:sakura_learn/screens/practice_screen.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 const Color pastellBlue = Color(0xFFA8DADC);
 const welcome = TextStyle(
@@ -9,38 +10,40 @@ const welcome = TextStyle(
 );
 
 class HomeScreen extends StatelessWidget {
-  void _startWorkout() {
-    print("Button pressed");
+  final PersistentTabController controller;  // Accepts the controller
+
+  const HomeScreen({super.key, required this.controller});
+
+  void _startWorkout(BuildContext context) {
+    controller.jumpToTab(1); // Updates the bottom nav index before navigating
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: pastellBlue,
       body: Align(
-        alignment: Alignment(0.0, -0.5), // Moves content between top and center
+        alignment: const Alignment(0.0, -0.5),
         child: Column(
-          mainAxisSize:
-              MainAxisSize.min, // Keeps column from taking full height
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text("こんにちは, Marvin!", style: welcome),
-            SizedBox(height: 20), // Space between text and button
+            const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _startWorkout,
+              onPressed: () {
+                _startWorkout(context);
+              },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black, // Button background color
+                backgroundColor: Colors.black,
               ),
-              child: Text(
+              child: const Text(
                 "Start Workout now!",
-                style: TextStyle(color: Colors.white), // Text color
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
         ),
       ),
-
-      bottomNavigationBar: BottomNavBar(
-        backgroundColor: pastellBlue,
-      ), // import out /widgets/bottom_nav_bar.dart
     );
   }
 }

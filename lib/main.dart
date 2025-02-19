@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sakura_learn/screens/main_screen.dart';
 import '/screens/home_screen.dart';
 
 
 
-const IconData home = IconData(0xe318, fontFamily: 'MaterialIcons');
 
 void main() {
   runApp(MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Removes Debug Banner
-      home: HomeScreen(),
+      home: MainScreen(),
     );
   }
 }
